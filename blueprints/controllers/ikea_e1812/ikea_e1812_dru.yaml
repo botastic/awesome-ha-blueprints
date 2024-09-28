@@ -37,7 +37,7 @@ blueprint:
       description:
         The controller device to use for the automation. Choose a value
         only if the remote is integrated with deCONZ, ZHA.
-      default: ""
+      default: ''
       selector:
         device: {}
     controller_entity:
@@ -45,7 +45,7 @@ blueprint:
       description:
         The action sensor of the controller to use for the automation.
         Choose a value only if the remote is integrated with Zigbee2MQTT.
-      default: ""
+      default: ''
       selector:
         entity:
           domain:
@@ -155,28 +155,28 @@ variables:
   # helper_last_controller_event: !input helper_last_controller_event
   # helper_double_press_delay: !input helper_double_press_delay
   helper_debounce_delay: !input helper_debounce_delay
-  integration_id: "{{ integration | lower }}"
+  integration_id: '{{ integration | lower }}'
   # adjusted_double_press_delay:
   #   "{{ [helper_double_press_delay - helper_debounce_delay,
   #   100] | max }}"
   actions_mapping:
     deconz:
       button_short:
-        - "1002"
+        - '1002'
       button_long:
-        - "1001"
+        - '1001'
       button_release:
-        - "1003"
+        - '1003'
     zha:
       button_short:
-        - "on"
+        - 'on'
       button_long:
         - move_with_on_off_0_83
       button_release:
         - stop
     zigbee2mqtt:
       button_short:
-        - "on"
+        - 'on'
       button_long:
         - brightness_move_up
       button_release:
@@ -184,7 +184,7 @@ variables:
 
       #added by dru
       button_double:
-        - "off"
+        - 'off'
 
   button_short: '{{ actions_mapping[integration_id]["button_short"] }}'
   button_long: '{{ actions_mapping[integration_id]["button_long"] }}'
@@ -280,46 +280,46 @@ action:
       #       - conditions: []
       #         sequence: !input action_button_short
 
-      - conditions: "{{ trigger_action | string in button_long }}"
+      - conditions: '{{ trigger_action | string in button_long }}'
         sequence:
           - event: ahb_controller_event
             event_data:
-              controller: "{{ controller_id }}"
+              controller: '{{ controller_id }}'
               action: button_long
           - choose:
-              - conditions: "{{ button_long_loop }}"
+              - conditions: '{{ button_long_loop }}'
                 sequence:
                   - repeat:
-                      while: "{{ repeat.index < button_long_max_loop_repeats | int }}"
+                      while: '{{ repeat.index < button_long_max_loop_repeats | int }}'
                       sequence: !input action_button_long
             default: !input action_button_long
 
-      - conditions: "{{ trigger_action | string in button_release }}"
+      - conditions: '{{ trigger_action | string in button_release }}'
         sequence:
           - event: ahb_controller_event
             event_data:
-              controller: "{{ controller_id }}"
+              controller: '{{ controller_id }}'
               action: button_release
           - choose:
               - conditions: []
                 sequence: !input action_button_release
 
-     # all below are added by dru
-      - conditions: "{{ trigger_action | string in button_short }}"
+      # all below are added by dru
+      - conditions: '{{ trigger_action | string in button_short }}'
         sequence:
           - event: ahb_controller_event
             event_data:
-              controller: "{{ controller_id }}"
+              controller: '{{ controller_id }}'
               action: button_short
           - choose:
               - conditions: []
                 sequence: !input action_button_short
-      
-      - conditions: "{{ trigger_action | string in button_double }}"
+
+      - conditions: '{{ trigger_action | string in button_double }}'
         sequence:
           - event: ahb_controller_event
             event_data:
-              controller: "{{ controller_id }}"
+              controller: '{{ controller_id }}'
               action: button_double
           - choose:
               - conditions: []

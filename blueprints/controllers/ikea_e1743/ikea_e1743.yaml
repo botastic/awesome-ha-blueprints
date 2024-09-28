@@ -1,7 +1,7 @@
 # Blueprint metadata
 blueprint:
   homeassistant:
-    min_version: "2023.6.0"
+    min_version: '2023.6.0'
   name: Controller - IKEA E1743 TRÅDFRI On/Off Switch & Dimmer
   description: |
     # Controller - IKEA E1743 TRÅDFRI On/Off Switch & Dimmer

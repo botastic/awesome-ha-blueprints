@@ -19,7 +19,7 @@ This Hook blueprint allows to build a controller-based automation to control a l
 :::info
 An automation created with this blueprint must be linked to a [Controller](/docs/blueprints/controllers) automation. Controllers are blueprints which allow to easily integrate a wide range of controllers and use them to run a set of actions when interacting with them. They expose an abstract interface used by Hooks to create controller-based automations.
 
-See the list of [Controllers supported by this Hook]( #supported-controllers) for additional details.
+See the list of [Controllers supported by this Hook](#supported-controllers) for additional details.
 :::
 
 ## Requirements
@@ -36,98 +36,98 @@ This integration provides the entity which represents a light in Home Assistant.
 ## Inputs
 
 <Input
-name='Controller Device'
-description='The controller device which will control the Light. Choose a value only if the integration used to connect the controller to Home Assistant exposes it as a Device. This value should match the one specified in the corresponding Controller automation.'
-selector='device'
-required
+  name='Controller Device'
+  description='The controller device which will control the Light. Choose a value only if the integration used to connect the controller to Home Assistant exposes it as a Device. This value should match the one specified in the corresponding Controller automation.'
+  selector='device'
+  required
 />
 <Input
-name='Controller Entity'
-description='The controller entity which will control the Light. Choose a value only if the integration used to connect the controller to Home Assistant exposes it as an Entity. This value should match the one specified in the corresponding Controller automation.'
-selector='entity'
-required
+  name='Controller Entity'
+  description='The controller entity which will control the Light. Choose a value only if the integration used to connect the controller to Home Assistant exposes it as an Entity. This value should match the one specified in the corresponding Controller automation.'
+  selector='entity'
+  required
 />
 <Input
-name='Controller model'
-description='The model for the controller used in this automation. Choose a value from the list of supported controllers.'
-selector='select'
-required
+  name='Controller model'
+  description='The model for the controller used in this automation. Choose a value from the list of supported controllers.'
+  selector='select'
+  required
 />
 <Input
-name='Light'
-description='Light which will be controlled with this automation.'
-selector='entity'
-required
+  name='Light'
+  description='Light which will be controlled with this automation.'
+  selector='entity'
+  required
 />
 <Input
-name='(Optional) Scene dropdown'
-description='Dropdown selection containing a list of scenes. Only when one of the buttons is configured to cycle scenes.'
-selector='select'
+  name='(Optional) Scene dropdown'
+  description='Dropdown selection containing a list of scenes. Only when one of the buttons is configured to cycle scenes.'
+  selector='select'
 />
 <Input
-name='Light color mode'
-description='Specify how the controller will set the light color. Choose "Color Temperature" and "Hue - Saturation" depending on the features supported by your light. If you are not sure you can select "Auto". "None" will disable color control features.'
-selector='select'
+  name='Light color mode'
+  description='Specify how the controller will set the light color. Choose "Color Temperature" and "Hue - Saturation" depending on the features supported by your light. If you are not sure you can select "Auto". "None" will disable color control features.'
+  selector='select'
 />
 <Input
-name='Light Transition'
-description='Number that represents the time (in milliseconds) the light should take turn on or off, if the light supports it.'
-selector='number'
+  name='Light Transition'
+  description='Number that represents the time (in milliseconds) the light should take turn on or off, if the light supports it.'
+  selector='number'
 />
 <Input
-name='Light minimum brightness'
-description='The minimum brightness the light can be set with this automation.'
-selector='number'
+  name='Light minimum brightness'
+  description='The minimum brightness the light can be set with this automation.'
+  selector='number'
 />
 <Input
-name='Light maximum brightness'
-description='The maximum brightness the light can be set with this automation.'
-selector='number'
+  name='Light maximum brightness'
+  description='The maximum brightness the light can be set with this automation.'
+  selector='number'
 />
 <Input
-name='Light brightness steps - short actions'
-description='Number of steps from min to max brightness when controlling brightness with short actions (eg. button press).'
-selector='number'
+  name='Light brightness steps - short actions'
+  description='Number of steps from min to max brightness when controlling brightness with short actions (eg. button press).'
+  selector='number'
 />
 <Input
-name='Light brightness steps - long actions'
-description='Number of steps from min to max brightness when controlling brightness with long actions (eg. button hold or controller rotation).'
-selector='number'
+  name='Light brightness steps - long actions'
+  description='Number of steps from min to max brightness when controlling brightness with long actions (eg. button hold or controller rotation).'
+  selector='number'
 />
 <Input
-name='Force brightness value at turn on'
-description='Force brightness to the "On brightness" input value, when the light is being turned on.'
-selector='boolean'
+  name='Force brightness value at turn on'
+  description='Force brightness to the "On brightness" input value, when the light is being turned on.'
+  selector='boolean'
 />
 <Input
-name='On brightness'
-description='Brightness value to force when turning on the light'
-selector='number'
+  name='On brightness'
+  description='Brightness value to force when turning on the light'
+  selector='number'
 />
 <Input
-name='Smooth power on'
-description='Force the light to turn on at minimum brightness when a brightness up command (single or continuous) is triggered and light is off.'
-selector='boolean'
+  name='Smooth power on'
+  description='Force the light to turn on at minimum brightness when a brightness up command (single or continuous) is triggered and light is off.'
+  selector='boolean'
 />
 <Input
-name='Smooth power off'
-description='Allow a brightness down command (single or continuous) to turn off the light when at minimum brightness. Disabling this will prevent the light from being turned off by brightness down commands.'
-selector='boolean'
+  name='Smooth power off'
+  description='Allow a brightness down command (single or continuous) to turn off the light when at minimum brightness. Disabling this will prevent the light from being turned off by brightness down commands.'
+  selector='boolean'
 />
 <Input
-name='Enable clamping color temperature'
-description='Enable clamping of color temperature (i.e. enforcing min and max values).'
-selector='boolean'
+  name='Enable clamping color temperature'
+  description='Enable clamping of color temperature (i.e. enforcing min and max values).'
+  selector='boolean'
 />
 <Input
-name='Light minimum color temperature'
-description='The minimum color temperature the light can be set with this automation. Will only take an effect if the light color mode evaluates to "Color Temperature" and clamping of color temperature is enabled.'
-selector='number'
+  name='Light minimum color temperature'
+  description='The minimum color temperature the light can be set with this automation. Will only take an effect if the light color mode evaluates to "Color Temperature" and clamping of color temperature is enabled.'
+  selector='number'
 />
 <Input
-name='Light maximum color temperature'
-description='The maximum color temperature the light can be set with this automation. Will only take an effect if the light color mode evaluates to "Color Temperature" and clamping of color temperature is enabled.'
-selector='number'
+  name='Light maximum color temperature'
+  description='The maximum color temperature the light can be set with this automation. Will only take an effect if the light color mode evaluates to "Color Temperature" and clamping of color temperature is enabled.'
+  selector='number'
 />
 
 ## Supported Controllers
@@ -193,4 +193,5 @@ If you want to link multiple lights to the same controller you can either use [L
 - **2022-07-30**: Add support for SONOFF SNZB-01.
 
 ## New Changelog (might be incomplete)
+
 - **2024-09-28**: Add cycling of scenes.

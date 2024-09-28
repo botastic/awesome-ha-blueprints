@@ -109,13 +109,14 @@ variables:
   integration_id: '{{ integration | lower }}'
   # mapping between actions and integrations
   actions_mapping:
-    # deconz:
-    #   button_1_short: ['1002']
-    #   button_1_double: ['1004']
-    #   button_2_short: ['2002']
-    #   button_2_double: ['2004']
-    #   button_all_short: ['']
-    #   button_all_double: ['']
+    # TODO: would need to be verified by someone who has the corresponding setup
+    deconz:
+      button_1_short: ['1002']
+      button_1_double: ['1004']
+      button_2_short: ['2002']
+      button_2_double: ['2004']
+      button_all_short: ['']
+      button_all_double: ['']
     zha:
       button_1_short: [41_single]
       button_1_double: [41_double]
@@ -123,13 +124,14 @@ variables:
       button_2_double: [42_double]
       button_all_short: [51_single]
       button_all_double: [51_double]
-    # zigbee2mqtt:
-    #   button_1_short: [button_1_single]
-    #   button_1_double: [button_1_double]
-    #   button_2_short: [button_2_single]
-    #   button_2_double: [button_2_double]
-    #   button_all_short: []
-    #   button_all_double: []
+    # TODO: would need to be verified by someone who has the corresponding setup
+    zigbee2mqtt:
+      button_1_short: [button_1_single]
+      button_1_double: [button_1_double]
+      button_2_short: [button_2_single]
+      button_2_double: [button_2_double]
+      button_all_short: []
+      button_all_double: []
   # pre-choose actions for buttons based on configured integration
   # no need to perform this task at automation runtime
   button_1_short: '{{ actions_mapping[integration_id]["button_1_short"] }}'
@@ -146,14 +148,14 @@ mode: restart
 max_exceeded: silent
 trigger:
   # trigger for zigbee2mqtt
-  # - platform: event
-  #   event_type: state_changed
-  #   event_data:
-  #     entity_id: !input controller_entity
+  - platform: event
+    event_type: state_changed
+    event_data:
+      entity_id: !input controller_entity
   # trigger for other integrations
   - platform: event
     event_type:
-      # - deconz_event
+      - deconz_event
       - zha_event
     event_data:
       device_id: !input controller_device
